@@ -2,4 +2,4 @@ Our project being a **patent search engine** is a tool for improving the intelle
 
 
 you can access to our website with this link:
-https://moteur-de-recherche-epo-5.onrender.com/?query=CNN+and+LSTM
+https://moteur-de-recherche-epo-5.onrender.com
