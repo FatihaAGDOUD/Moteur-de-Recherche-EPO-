@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Patent Search</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../static/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Patent Search Engine</h1>
+            <form method="get">
+                <div class="search-container">
+                    <input type="text" 
+                           name="query" 
+                           value="{{ query }}"
+                           placeholder="Enter search query (e.g., water purification)">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>Search
+                    </button>
+                </div>
+            </form>
+        </header>
+
+        {% if patents %}
+            <div class="results-container">
+                <div class="results-count">
+                    Found {{ total_results }} results {% if query %}for "{{ query }}"{% endif %}
+                </div>
+                
+                <div class="patents-grid">
+                    {% for patent in patents %}
+                        <div class="patent-card">
+                            <div class="patent-header">
+                                <div>
+                                    <span class="country-badge">
+                                        {{ patent.country }}
+                                    </span>
+                                    <span class="doc-number">{{ patent.doc_number }}</span>
+                                    <span class="kind-code">({{ patent.kind }})</span>
+                                </div>
+                                <a href="{{ patent.espacenet_url }}" 
+                                   target="_blank"
+                                   class="espacenet-link">
+                                    <span>View in Espacenet</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            
+                            <h2 class="patent-title">
+                                {% if patent.error %}
+                                    {% if patent.error in ['timeout', 'rate_limit', 'network'] %}
+                                        <span class="error-orange">{{ patent.title }}</span>
+                                    {% elif patent.error == 'parse' %}
+                                        <span class="error-red">{{ patent.title }}</span>
+                                    {% else %}
+                                        <span class="error-gray">{{ patent.title }}</span>
+                                    {% endif %}
+                                {% else %}
+                                    {{ patent.title }}
+                                {% endif %}
+                            </h2>
+                            
+                            {% if patent.classifications %}
+                                <div class="classifications-section">
+                                    <h3>CIB Classifications:</h3>
+                                    <div class="classifications-container">
+                                        {% for classification in patent.classifications %}
+                                            <span class="classification-badge">
+                                                {{ classification }}
+                                            </span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            
+                            {% if patent.inventors %}
+                                <div class="inventors-section">
+                                    <h3>Inventors:</h3>
+                                    <div class="inventors-list">
+                                        {{ patent.inventors|join(', ') }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            
+                            <div class="family-id">
+                                Family ID: {{ patent.family_id }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {% if total_pages > 1 %}
+                    <div class="pagination">
+                        <nav class="pagination-nav">
+                            {% if current_page > 1 %}
+                                <a href="?query={{ query }}&page={{ current_page - 1 }}" 
+                                   class="pagination-arrow">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            {% endif %}
+
+                            {% for p in range(max(1, current_page - 2), min(total_pages + 1, current_page + 3)) %}
+                                <a href="?query={{ query }}&page={{ p }}"
+                                   class="pagination-number {% if p == current_page %}active{% endif %}">
+                                    {{ p }}
+                                </a>
+                            {% endfor %}
+
+                            {% if current_page < total_pages %}
+                                <a href="?query={{ query }}&page={{ current_page + 1 }}"
+                                   class="pagination-arrow">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            {% endif %}
+                        </nav>
+                    </div>
+                {% endif %}
+            </div>
+        {% elif query %}
+            <div class="no-results">
+                No patents found for "{{ query }}". Try another search term.
+            </div>
+        {% else %}
+            <div class="no-results">
+                Enter a search term to find patents.
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

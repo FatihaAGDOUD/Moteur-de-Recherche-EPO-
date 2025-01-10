@@ -1,0 +1,314 @@
+/* Modern CSS Reset and Variables */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --green-100: #dcfce7;
+    --green-700: #15803d;
+    --blue-100: #dbeafe;
+    --blue-800: #1e40af;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --radius-full: 9999px;
+    --radius-lg: 0.5rem;
+    --radius-md: 0.375rem;
+  }
+  
+  /* Modern Base Styles */
+  body {
+    background-color: var(--gray-50);
+    font-family: system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 2rem clamp(1rem, 5%, 2rem);
+  }
+  
+  /* Modern Header Styles */
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  header h1 {
+    font-size: clamp(1.875rem, 4vw, 2.25rem);
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  /* Modern Search Container */
+  .search-container {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+  
+  .search-container input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-lg);
+    transition: all 0.2s ease;
+    font-size: 1rem;
+  }
+  
+  .search-container input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+  
+  .search-container button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary);
+    color: white;
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .search-container button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+  }
+  
+  /* Modern Results Container */
+  .results-container {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .results-count {
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Modern Patent Card */
+  .patents-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+  
+  .patent-card {
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+  }
+  
+  .patent-card:hover {
+    background-color: var(--gray-50);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .patent-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .country-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    background-color: var(--blue-100);
+    color: var(--blue-800);
+  }
+  
+  .doc-number {
+    margin-left: 0.75rem;
+    color: var(--gray-900);
+    font-weight: 600;
+  }
+  
+  .kind-code {
+    color: var(--gray-500);
+    font-size: 0.875rem;
+  }
+  
+  .espacenet-link {
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .espacenet-link:hover {
+    color: var(--primary-dark);
+  }
+  
+  /* Modern Patent Title */
+  .patent-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  
+  /* Modern Error States */
+  .error-orange { color: #ea580c; }
+  .error-red { color: #dc2626; }
+  .error-gray { color: var(--gray-600); }
+  
+  /* Modern Classifications */
+  .classifications-section {
+    margin-bottom: 1rem;
+  }
+  
+  .classifications-section h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+  }
+  
+  .classifications-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .classification-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    background-color: var(--green-100);
+    color: var(--green-700);
+  }
+  
+  /* Modern Inventors Section */
+  .inventors-section {
+    margin-bottom: 1rem;
+  }
+  
+  .inventors-section h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+  }
+  
+  .inventors-list {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+  
+  /* Modern Family ID */
+  .family-id {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+  }
+  
+  /* Modern Pagination */
+  .pagination {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .pagination-nav {
+    display: inline-flex;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+  
+  .pagination-arrow {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem;
+    border: 1px solid var(--gray-200);
+    background-color: white;
+    color: var(--gray-500);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .pagination-arrow:hover {
+    background-color: var(--gray-50);
+    color: var(--gray-900);
+  }
+  
+  .pagination-number {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--gray-200);
+    background-color: white;
+    color: var(--gray-900);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .pagination-number:hover {
+    background-color: var(--gray-50);
+  }
+  
+  .pagination-number.active {
+    color: var(--primary);
+    background-color: var(--blue-100);
+    border-color: var(--primary);
+  }
+  
+  /* Modern No Results */
+  .no-results {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--gray-600);
+    font-size: 1.125rem;
+  }
+  
+  /* Modern Responsive Design */
+  @media (max-width: 640px) {
+    .patent-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .search-container {
+      flex-direction: column;
+    }
+    
+    .search-container button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
