@@ -7,5 +7,5 @@ Collaborators:
     CHAKROUN Azzahra,
     SEGHIR Safae
 
-you can access to our website with this link:
+You can access our website with this link:
 https://moteur-de-recherche-epo-5.onrender.com
