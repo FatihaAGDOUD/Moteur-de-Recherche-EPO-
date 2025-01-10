@@ -2,7 +2,7 @@ Our project being a **patent search engine** is a tool for improving the intelle
 
 Collaborators:
     AGDOUD Fatiha,
-    HARRAG Ghada,
+    HARRAG Rhada,
     CHAABAN Hanane,
     CHAKROUN Azzahra,
     SEGHIR Safae
